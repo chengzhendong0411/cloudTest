@@ -1,0 +1,31 @@
+server:
+  port: 8075
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springclouduser?useSSL=false
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+    # 配置 nacos
+ # cloud:
+ #   nacos:
+#      server-addr: localhost:8848  #在bootstrap.yml中已存在
+#      discovery:
+#        cluster-name: SH #集群模式
+     #   namespace: 446d102b-8c49-4c3e-9c79-e9f30efc37d2 #dev 命名空间id
+ #       config:
+ #         file-extension: yaml # 文件名后缀
+#  application:
+#    name: userservice # 服务名称
+#  profiles:
+ #   active: dev #开发环境 dev    服务名称 + 开发环境 + 后缀  = 在页面配置的名称
+
+mybatis:
+  type-aliases-package: cn.itcast.user.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS

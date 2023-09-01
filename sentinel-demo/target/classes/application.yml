@@ -1,0 +1,14 @@
+server:
+  port: 8071
+spring:
+  # 配置 nacos
+  cloud:
+    nacos:
+      server-addr: localhost:8848  #在bootstrap.yml中已存在
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+  application:
+    name: sentinel # 服务名称
+  #profiles:
+ #   active: dev #开发环境 dev    服务名称 + 开发环境 + 后缀  = 在页面配置的名称

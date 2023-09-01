@@ -1,0 +1,63 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloudorder?useSSL=false
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+    # 配置 nacos
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: SH #集群模式
+      #  namespace: 446d102b-8c49-4c3e-9c79-e9f30efc37d2  # 命名空间id 环境隔离（测试环境正式环境）
+      sentinel:  # 心跳机制
+        transport:
+          dashboard: localhost:8080
+  application:
+    name: orderservice
+mybatis:
+  type-aliases-package: cn.itcast.user.pojo  # 对应的全路径类名和entity类名关系 既
+  configuration:
+    map-underscore-to-camel-case: true  # 开启驼峰命名规则 默认false 数据库与实体类属性一致
+logging:
+  level:
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+# ribbon 饥饿加载
+ribbon:
+  eager-load:
+    enabled: true
+    clients: userservice
+   #   - userservice  集合
+   #  - userservice2
+
+# userservice:
+ #   ribbon:  负载均衡策略  可以用加载bean方式
+ #     NFLoadBalanceRuleClassName: com
+
+  # 配置文件中配置feign日志级别等
+#feign:
+#  client:
+#    config:
+#      default:  # 全局服务 、 或者配置服务名称
+ #       logger-level: Full # 日志级别
+
+  #Feign底层的客户端实现：
+  #URLConnection：默认实现，不支持连接池
+  #Apache HttpClient ：支持连接池
+  #OKHttp：支持连接池
+
+  #因此优化Feign的性能主要包括：
+ # 使用连接池代替默认的URLConnection
+#  日志级别，最好用basic或none
+
+
+feign:
+  httpclient:
+    enabled: true # 支持HttpClient的开关
+    max-connections: 200 # 最大连接数
+    max-connections-per-route: 50 # 单个路径的最大连接数

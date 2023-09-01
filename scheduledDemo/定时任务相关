@@ -1,0 +1,5 @@
+1、默认的定时任务  通过@Scheduled 和 @EnableScheduling 进行配置
+
+2、xxl job 定时器
+
+3、异步执行 @EnableAsync +  @Asyc注解
