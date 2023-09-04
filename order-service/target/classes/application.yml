@@ -12,7 +12,7 @@ spring:
       server-addr: localhost:8848
       discovery:
         cluster-name: SH #集群模式
-      #  namespace: 446d102b-8c49-4c3e-9c79-e9f30efc37d2  # 命名空间id
+      #  namespace: 446d102b-8c49-4c3e-9c79-e9f30efc37d2  # 命名空间id 环境隔离（测试环境正式环境）
       sentinel:  # 心跳机制
         transport:
           dashboard: localhost:8080
@@ -46,8 +46,25 @@ ribbon:
 #      default:  # 全局服务 、 或者配置服务名称
  #       logger-level: Full # 日志级别
 
+  #Feign底层的客户端实现：
+  #URLConnection：默认实现，不支持连接池
+  #Apache HttpClient ：支持连接池
+  #OKHttp：支持连接池
+
+  #因此优化Feign的性能主要包括：
+ # 使用连接池代替默认的URLConnection
+#  日志级别，最好用basic或none
+
+
 feign:
   httpclient:
     enabled: true # 支持HttpClient的开关
     max-connections: 200 # 最大连接数
     max-connections-per-route: 50 # 单个路径的最大连接数
+mybatis-plus:
+  #global-config:
+  #  db-config:
+  #   table-prefix:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: cn.itcast.order.pojo
