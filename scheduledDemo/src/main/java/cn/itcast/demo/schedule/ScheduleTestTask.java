@@ -11,8 +11,10 @@ import java.util.Date;
 @Component
 public class ScheduleTestTask {
 
-
-    @Scheduled(cron = "4-40 * * * * ?")
+    /**
+     * 表示每2秒 执行任务
+     */
+    @Scheduled(cron = "0/2 * * * * ? ")
     public void scheduleTask(){
         System.out.println("现在时间 "+ new Date().toString());
     }

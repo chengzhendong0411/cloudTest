@@ -12,7 +12,7 @@ public class AsycTestDemo {
     /**
      * 不带返回值
      */
-    @Async(value = "testThreadPool") //异步
+    @Async(value = "taskThread") //异步
     public void test(){
         try {
             Thread.sleep(3000L);
