@@ -62,7 +62,7 @@ class ApplicationTests {
      *     likeLeft(R column, Object val); // 等价于 LIKE '%值'，例: likeLeft("name", "王") ---> name like '%王'
      *     likeRight(R column, Object val); // 等价于 LIKE '值%'，例: likeRight("name", "王") ---> name like '王%'
 
-        isNull(R column); // 等价于 IS NULL，例: isNull("name") ---> name is null
+     *   isNull(R column); // 等价于 IS NULL，例: isNull("name") ---> name is null
         isNotNull(R column); // 等价于 IS NOT NULL，例: isNotNull("name") ---> name is not null
      *      groupBy(R... columns); // 等价于 GROUP BY 字段, ...， 例: groupBy("id", "name") ---> group by id,name
      *
@@ -102,7 +102,6 @@ class ApplicationTests {
         System.out.println("selectMaps :"+maps);
         List<Object> objects = orderPlusMapper.selectObjs(queryWrapper);
         System.out.println("selectObjs :"+objects);*/
-
 
         try {
             LambdaQueryWrapper<Order> queryWrapper1 = new LambdaQueryWrapper<>();
