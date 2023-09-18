@@ -25,18 +25,18 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="GateWay" options="-parameters" />
-      <module name="eureka-serverTest" options="-parameters" />
-      <module name="feign-api" options="-parameters" />
-      <module name="mqDemo" options="-parameters" />
+      <module name="GateWay" options="" />
+      <module name="eureka-serverTest" options="" />
+      <module name="feign-api" options="" />
+      <module name="mqDemo" options="" />
       <module name="order-service" options="-parameters" />
-      <module name="order-service2" options="-parameters" />
-      <module name="order-service3" options="-parameters" />
-      <module name="scheduledDemo" options="-parameters" />
-      <module name="sentinel-demo" options="-parameters" />
-      <module name="user-service" options="-parameters" />
-      <module name="user-service2" options="-parameters" />
-      <module name="user-service3" options="-parameters" />
+      <module name="order-service2" options="" />
+      <module name="order-service3" options="" />
+      <module name="scheduledDemo" options="" />
+      <module name="sentinel-demo" options="" />
+      <module name="user-service" options="" />
+      <module name="user-service2" options="" />
+      <module name="user-service3" options="" />
     </option>
   </component>
 </project>
