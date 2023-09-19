@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 // 测试类
 
@@ -120,6 +121,22 @@ class ApplicationTests {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    @Test
+    public void tett(){
+        // 模拟查询出数据库需要执行的总条数
+        int total = 1005;
+        // 每次需要执行的条数
+        int runSize = 100;
+        // 计算出需要循环执行的次数
+        int runCount = (total % runSize) > 0 ? (total / runSize) + 1 : (total / runSize);
+        // 循环执行，按每次需要执行条数一页一页执行
+        Stream.iterate(1, i -> i + 1).limit(runCount).forEach(pageIndex -> {
+            /*Page<String> page = querPage(pageIndex, runCount);
+            // 业务逻辑代码*/
+            System.out.println(pageIndex+"     "+runCount);
+        });
     }
 
 
