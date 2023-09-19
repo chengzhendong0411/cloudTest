@@ -6,6 +6,10 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
     # 配置 nacos
  # cloud:
  #   nacos:
