@@ -8,12 +8,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@Builder
 // @TableName("tb_order")
-public class Order {
+public class Order implements Serializable {
     //@TableId
     private Long id;
     private Long price;

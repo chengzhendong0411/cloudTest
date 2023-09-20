@@ -57,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> batchInsert(){
         List<Order> orders = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            Order build = Order.builder().num(i).name("这是测试名字"+i).price(Long.valueOf(i)).userId(Long.valueOf(1)).build();
+            Order build = new Order();//Order.builder().num(i).name("这是测试名字"+i).price(Long.valueOf(i)).userId(Long.valueOf(1)).build();
             orders.add(build);
         }
         Integer num = orderPlusMapper.batchInsert(orders);
@@ -73,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> pageTest(){
         List<Order> orders = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            Order build = Order.builder().num(i).name("这是测试名字"+i).price(Long.valueOf(i)).userId(Long.valueOf(1)).build();
+            Order build = new Order();//Order.builder().num(i).name("这是测试名字"+i).price(Long.valueOf(i)).userId(Long.valueOf(1)).build();
             orders.add(build);
         }
         /*int total = 1000;
