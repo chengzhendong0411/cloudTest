@@ -6,6 +6,10 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
     # 配置 nacos
  # cloud:
  #   nacos:
@@ -29,3 +33,11 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+
+mybatis-plus:
+  #global-config:
+  #  db-config:
+  #   table-prefix:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: cn.itcast.user.pojo

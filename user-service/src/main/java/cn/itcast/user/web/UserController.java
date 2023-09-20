@@ -1,6 +1,7 @@
 package cn.itcast.user.web;
 
 import cn.itcast.user.config.PatternProperties;
+import cn.itcast.user.mapper.UserMapper;
 import cn.itcast.user.pojo.User;
 import cn.itcast.user.service.UserService;
 import cn.itcast.user.util.RedisUtil;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +35,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private RedisUtil redisUtil;
+    @Resource
+    private UserMapper userMapper;
 
     // 方式一、通过页面配置获取到注解方式
    /* @Value("${pattern.dateformat}")
@@ -87,12 +91,16 @@ public class UserController {
         User dto = new User();
         dto.setAddress("测试111");
         dto.setUsername("测试222");
-        redisUtil.hmset("user0",dtoTransMap(dto),10000);
-        Map<Object, Object> user0 = redisUtil.hmget("user0");
+        dto.setCreateTime("2023-04-05 12:10:11");
+        dto.setPrice("10.15");
+        redisUtil.hmset("user111",dtoTransMap(dto),10000);
+        Map<Object, Object> user0 = redisUtil.hmget("user111");
         User user = mapTransToDto(user0);
+        int insert = userMapper.insert(user);
+
         String jsonString = JSON.toJSONString(dto);
-        redisUtil.set("user1", jsonString);
-        Object user1 = redisUtil.get("user1");
+        redisUtil.set("user10", jsonString);
+        Object user1 = redisUtil.get("user10");
         User parse = JSON.parseObject(String.valueOf(user1), User.class);
 
 
@@ -111,6 +119,8 @@ public class UserController {
         Map<String, Object> accountMap = new HashMap<>();
         accountMap.put("username", dto.getUsername());
         accountMap.put("address", dto.getAddress());
+        accountMap.put("price", dto.getPrice());
+        accountMap.put("createTime", dto.getCreateTime());
         return accountMap;
     }
 
