@@ -10,15 +10,15 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Component
 public class ThreadPoolConfig {
 
-    @Bean("taskThread")
-    public Executor taskExcutor(){
+    @Bean(value = "taskThread" ,destroyMethod="destroy")
+    public ThreadPoolTaskExecutor taskExcutor(){
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
         threadPoolTaskExecutor.setCorePoolSize(10);
         threadPoolTaskExecutor.setMaxPoolSize(20);
         threadPoolTaskExecutor.setKeepAliveSeconds(200);
         threadPoolTaskExecutor.setQueueCapacity(100);
         threadPoolTaskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
-        threadPoolTaskExecutor.setThreadNamePrefix("自定义线程~");
+        threadPoolTaskExecutor.setThreadNamePrefix("taskThread~");
         return threadPoolTaskExecutor;
     }
 
