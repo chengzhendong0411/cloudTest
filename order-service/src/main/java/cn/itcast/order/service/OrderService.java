@@ -9,4 +9,5 @@ public interface OrderService {
     public Order queryOrderById2(Long orderId);
     public Order queryOrderById(Long orderId);
     public List<Order> batchInsert();
+    public Order queryOrderFromOrderById(Long orderId);
 }

@@ -31,26 +31,27 @@ public class OrderController {
    @Resource
    private RedissonClient redissonClient;
 
-    @GetMapping("/{orderId}")
-    public Order queryOrderByUserId(@PathVariable("orderId") Long orderId) {
+    @GetMapping("/orderId")
+    public Order queryOrderByUserId(Integer orderId) {
 
         // 根据id查询订单并返回
-        Order order = orderServiceImpl.queryOrderById(orderId);
+        Order order = orderServiceImpl.queryOrderById(Long.valueOf(orderId));
         System.out.println("热部署成功");
         return order;
     }
-    @GetMapping("/feign/{orderId}")
-    public Order queryOrderById2(@PathVariable("orderId") Long orderId) {
-
+    @GetMapping("/feignOrder")
+    public Order queryOrderById2( Integer orderId) {
+        /*Integer ttt = 0 ;
+        Integer test = 1/ttt;*/
         // 根据id查询订单并返回
-        Order order = orderServiceImpl.queryOrderById2(orderId);
+        Order order = orderServiceImpl.queryOrderById2(Long.valueOf(orderId));
         System.out.println("热部署成功");
         return order;
     }
     // mybatisPlus测试
 
-    @GetMapping("/queryOrderPlus/{orderId}")
-    public Order queryOrderPlus(@PathVariable("orderId") Long orderId) {
+    @GetMapping("/queryOrderPlus")
+    public Order queryOrderPlus(Integer orderId) {
         // 根据id查询订单并返回
         Order order = orderServicePlus.getById(orderId);
         System.out.println("热部署成功 "+order);
@@ -67,6 +68,13 @@ public class OrderController {
         return null;
     }
 
+    @GetMapping("/testQuery")
+    public Order getOrderFromOtherService(Long orderId) {
+        // 根据id查询订单并返回
+        Order order = orderServiceImpl.queryOrderFromOrderById(orderId);
+        System.out.println("热部署成功");
+        return order;
+    }
 
 
     /**

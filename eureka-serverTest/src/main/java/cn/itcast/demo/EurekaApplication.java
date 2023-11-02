@@ -88,7 +88,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  *            不同
  *              nacos 对于服务提供者默认为临时实例、采用心跳检测，不正常会剔除
  *                                  非临时实例，nacos主动询问，不会剔除
- *                                      配置方式 myl中配置：ephemeral: false
+ *                                      配置方式 myl中配置：ephemeral: false (临时实例)
  *                     对于消费者，服务变更nacos主动推送变更消息，如果有服务挂了会主动推送变更消息push
  *                     nacos默认采用ap方式，当集群存在非临时实例时，采用cp模式；eureaka采用ap模式
  *              相同：

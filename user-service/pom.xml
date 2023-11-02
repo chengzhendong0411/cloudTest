@@ -53,7 +53,7 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <build>
+    <!--<build>
         <finalName>app</finalName>
         <plugins>
             <plugin>
@@ -61,5 +61,5 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>

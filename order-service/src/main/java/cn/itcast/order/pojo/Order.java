@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-// @TableName("tb_order")
+@TableName("tb_order")
 public class Order implements Serializable {
     //@TableId
     private Long id;

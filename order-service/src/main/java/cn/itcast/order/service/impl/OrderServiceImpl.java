@@ -33,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
         // 1.查询订单
         Order order = orderMapper.findById(orderId);
         // 远程调用
-        User user = userClient.findById(orderId);
+        //User user = userClient.findById(orderId);
         //order.setUser(user);
         return order;
     }
@@ -47,6 +47,13 @@ public class OrderServiceImpl implements OrderService {
         User forObject = restTemplate.getForObject(url, User.class);
         //order.setUser(forObject);
         return order;
+    }
+
+    public Order queryOrderFromOrderById(Long orderId) {
+        String url = "http://orderservice/order/feignOrder?orderId="+orderId;
+        Order forObject = restTemplate.getForObject(url, Order.class);
+        //order.setUser(forObject);
+        return forObject;
     }
 
 

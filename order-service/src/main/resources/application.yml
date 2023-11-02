@@ -1,6 +1,8 @@
 server:
   port: 8081
 spring:
+ # profiles:
+ #   active: dev # 环境
   datasource:
     url: jdbc:mysql://localhost:3306/springcloudorder?useSSL=false&allowMultiQueries=true
     username: root
@@ -11,12 +13,14 @@ spring:
     nacos:
       server-addr: localhost:8848
       discovery:
+        ephemeral: true # 永久实例
         cluster-name: SH #集群模式
-      #  namespace: 446d102b-8c49-4c3e-9c79-e9f30efc37d2  # 命名空间id 环境隔离（测试环境正式环境）
+        #namespace: 50603bad-232a-44c0-b10a-22c2fbfbac67  # 命名空间id 环境隔离（测试环境正式环境）
       sentinel:  # 心跳机制
         transport:
           dashboard: localhost:8080
   application:
+    #name: testservice
     name: orderservice
 mybatis:
   type-aliases-package: cn.itcast.user.pojo  # 对应的全路径类名和entity类名关系 既
@@ -31,6 +35,7 @@ logging:
 ribbon:
   eager-load:
     enabled: true
+    #clients: orderservice
     clients: userservice
    #   - userservice  集合
    #  - userservice2
