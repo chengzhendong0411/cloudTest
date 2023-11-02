@@ -14,7 +14,8 @@ public class ScheduleTestTask {
     /**
      * 表示每2秒 执行任务
      */
-    @Scheduled(cron = "0/2 * * * * ? ")
+    //@Scheduled(cron = "0/2 * * * * ? ")
+    @Scheduled(fixedRate= 2 * 1000, fixedDelay = 5000)
     public void scheduleTask(){
         System.out.println("现在时间 "+ new Date().toString());
     }

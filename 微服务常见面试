@@ -1,5 +1,5 @@
 nacos 服务启动命令：startup.cmd -m standalone
-test
+
 springclud 服务注册  nacos（+配置中心）  eureka
             负载均衡 ribbon负载均衡 自定义负载均衡
             熔断、降级  hystrix、sentinel
