@@ -1,3 +1,6 @@
+最开始注解在EurekaApplication 启动类上面
+
+
 nacos 服务启动命令：startup.cmd -m standalone
 redis 启动命令  redis-server.exe  redis.windows.conf   接入redis命令： redis-cli
 
